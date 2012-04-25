@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -69,6 +70,19 @@ namespace Microsoft.Samples.Kinect.WpfViewers
             kinectName.Text = _Kinect.InstanceName;
             kinectStatus.Text = _Kinect.Status.ToString();
         }
+        
+        public int start;
+
+        public static StringBuilder string1;
+        public static StringBuilder string2;
+        public static StringBuilder string3;
+        public static StringBuilder string4;
+        public static StringBuilder string5;
+        public static StringBuilder string6;
+
+        public int one;
+        public int two;
+        
         #endregion Public API
 
         #region Init
@@ -89,9 +103,20 @@ namespace Microsoft.Samples.Kinect.WpfViewers
                 {
                     _Kinect.SkeletonEngine.TransformSmooth = true;
                 }
+
+
+                start = Environment.TickCount;
+
+                string1 = new StringBuilder();
+                string2 = new StringBuilder();
+                string3 = new StringBuilder();
+                string4 = new StringBuilder();
+                string5 = new StringBuilder();
+                string6 = new StringBuilder();
             }
         }
-        
+
+
         /// <summary>
         /// Skeletal tracking only works on one Kinect right now.  So return false if it is already in use.
         /// </summary>
@@ -106,6 +131,7 @@ namespace Microsoft.Samples.Kinect.WpfViewers
         private void nui_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
             SkeletonFrame skeletonFrame = e.SkeletonFrame;
+        
             
             //KinectSDK TODO: this shouldn't be needed, but if power is removed from the Kinect, you may still get an event here, but skeletonFrame will be null.
             if (skeletonFrame == null)
@@ -122,9 +148,19 @@ namespace Microsoft.Samples.Kinect.WpfViewers
             brushes[4] = new SolidColorBrush(Color.FromRgb(255, 64, 255));
             brushes[5] = new SolidColorBrush(Color.FromRgb(128, 128, 255));
 
+
+
             skeletonCanvas.Children.Clear();
             foreach (SkeletonData data in skeletonFrame.Skeletons)
             {
+                // Position der Person:
+                //Console.WriteLine("Position: (" +data.Position.X+"/"+data.Position.Y+"/"+data.Position.Z+"/"+data.Position.W +")");
+                // User Index:
+                //Console.WriteLine("UserIndex: " + data.UserIndex); 
+                // es gibt 20 Joints
+                //Console.WriteLine("Joints.Count: " + data.Joints.Count);
+
+                
                 if (SkeletonTrackingState.Tracked == data.TrackingState)
                 {
                     // Draw bones
@@ -135,10 +171,72 @@ namespace Microsoft.Samples.Kinect.WpfViewers
                     skeletonCanvas.Children.Add(getBodySegment(data.Joints, brush, JointID.HipCenter, JointID.HipLeft, JointID.KneeLeft, JointID.AnkleLeft, JointID.FootLeft));
                     skeletonCanvas.Children.Add(getBodySegment(data.Joints, brush, JointID.HipCenter, JointID.HipRight, JointID.KneeRight, JointID.AnkleRight, JointID.FootRight));
 
+                    //Console.WriteLine("iSkeleton: " + iSkeleton);
+
+
+                    int ms = Environment.TickCount - start;
+
+                    switch (iSkeleton) {
+                        case 1: string1.Append(ms + ";"); break;
+                        case 2: string2.Append(ms + ";"); break;
+                        case 3: string3.Append(ms + ";"); break;
+                        case 4: string4.Append(ms + ";"); break;
+                        case 5: string5.Append(ms + ";"); break;
+                        case 6: string6.Append(ms + ";"); break;
+                    }
+
+
+                    int i = 0;
                     // Draw joints
                     foreach (Joint joint in data.Joints)
                     {
                         Point jointPos = getDisplayPosition(joint);
+                       
+                        // joint-positionen, i läuft von 0 bis 19, jointPos wird ausgegeben als Zahl1;Zahl2
+                        //Console.WriteLine("jointPos " + i + ": " + jointPos);
+
+                        Console.WriteLine("joint.Position " + i + ": (" + joint.Position.X + "/" + joint.Position.Y + "/" + joint.Position.Z + "/" + joint.Position.W + ") - " + joint.ID);
+
+
+                        /*
+                         * Write to StringBuilder 
+                         */
+
+
+                        switch (iSkeleton) {
+                            case 1: string1.Append(joint.Position.X + ";" + joint.Position.Y + ";" + joint.Position.Z
+                                + ";" + joint.Position.W);
+                                if (i == 19) { string1.Append("\n"); }
+                                else { string1.Append(";"); }
+                                break;
+                            case 2: string2.Append(joint.Position.X + ";" + joint.Position.Y + ";" + joint.Position.Z
+                                 + ";" + joint.Position.W);
+                                if (i == 19) { string2.Append("\n"); }
+                                else { string2.Append(";"); }
+                                break;
+                            case 3: string3.Append(joint.Position.X + ";" + joint.Position.Y + ";" + joint.Position.Z
+                                 + ";" + joint.Position.W);
+                                if (i == 19) { string3.Append("\n"); }  
+                                else { string3.Append(";"); }
+                                break;
+                            case 4: string4.Append(joint.Position.X + ";" + joint.Position.Y + ";" + joint.Position.Z
+                                 + ";" + joint.Position.W);
+                                if (i == 19) { string4.Append("\n"); }
+                                else { string4.Append(";"); }
+                                break;
+                            case 5: string5.Append(joint.Position.X + ";" + joint.Position.Y + ";" + joint.Position.Z
+                                 + ";" + joint.Position.W);
+                                if (i == 19) { string5.Append("\n"); }
+                                else { string5.Append(";"); }
+                                break;
+                            case 6: string6.Append(joint.Position.X + ";" + joint.Position.Y + ";" + joint.Position.Z
+                                 + ";" + joint.Position.W);
+                                if (i == 19) { string6.Append("\n"); }
+                                else { string6.Append(";"); }
+                                break;
+                        
+                        }
+
                         Line jointLine = new Line();
                         jointLine.X1 = jointPos.X - 3;
                         jointLine.X2 = jointLine.X1 + 6;
@@ -146,8 +244,10 @@ namespace Microsoft.Samples.Kinect.WpfViewers
                         jointLine.Stroke = jointColors[joint.ID];
                         jointLine.StrokeThickness = 6;
                         skeletonCanvas.Children.Add(jointLine);
+                        i++;
                     }
                 }
+
                 iSkeleton++;
             } // for each skeleton
         }

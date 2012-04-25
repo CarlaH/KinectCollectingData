@@ -1,3 +1,21 @@
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\ResolveAssemblyReference.cache
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\KinectDepthViewer.baml
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\KinectColorViewer.baml
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\KinectDepthViewer.g.cs
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\KinectColorViewer.g.cs
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\KinectDiagnosticViewer.g.cs
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers_MarkupCompile.cache
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers_MarkupCompile.lref
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\KinectDiagnosticViewer.baml
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.g.resources
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.Properties.Resources.resources
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\GenerateResource.read.1.tlog
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\GenerateResource.write.1.tlog
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
+D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
 D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed - CollectingData\KinectWpfViewers\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
 D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed - CollectingData\KinectWpfViewers\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
 D:\Studium\Semester06_So12\Bachelorarbeit\KinectSDKSamples\Managed - CollectingData\KinectWpfViewers\obj\Debug\ResolveAssemblyReference.cache

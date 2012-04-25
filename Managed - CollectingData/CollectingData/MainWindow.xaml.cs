@@ -10,6 +10,7 @@
 //
 /////////////////////////////////////////////////////////////////////////
 using System;
+using System.Text;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
@@ -25,6 +26,8 @@ namespace SkeletalViewer
     /// </summary>
     public partial class MainWindow : Window
     {
+        DateTime startDateTime;
+
         #region ctor & Window events
         public MainWindow()
         {
@@ -39,8 +42,10 @@ namespace SkeletalViewer
             }
             else
             {
-                kinectRequiredOrEnabled.Text = "Kinect Enabled";
+                kinectRequiredOrEnabled.Text = "Kinect Enabled - recording started";
             }
+
+            startDateTime = DateTime.Now;
 
             //Watch for Kinects connecting, disconnecting - and gracefully handle them.
             Runtime.Kinects.StatusChanged += new EventHandler<StatusChangedEventArgs>(Kinects_StatusChanged);
@@ -51,6 +56,45 @@ namespace SkeletalViewer
 
         private void Window_Closed(object sender, EventArgs e)
         {
+
+            string stamp = startDateTime.Year + "-" + startDateTime.Month + "-" + startDateTime.Day + "_" 
+                + startDateTime.Hour+"-"+startDateTime.Minute;
+            
+                //Console.Write("string1:\n" + Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string1.ToString());
+                //Console.Write("string2:\n" + Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string2.ToString());
+
+                if (Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string1.Length > 1)
+                {
+                    System.IO.File.WriteAllText(@"D:\Studium\Semester06_So12\Bachelorarbeit\KinectData\" + stamp + "-P1.csv", 
+                        Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string1.ToString());
+                }
+                if (Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string2.Length > 1)
+                {
+                    System.IO.File.WriteAllText(@"D:\Studium\Semester06_So12\Bachelorarbeit\KinectData\" + stamp + "-P2.csv", 
+                        Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string2.ToString());
+                }
+                if (Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string3.Length > 1)
+                {
+                    System.IO.File.WriteAllText(@"D:\Studium\Semester06_So12\Bachelorarbeit\KinectData\" + stamp + "-P3.csv",
+                        Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string3.ToString());
+                }
+                if (Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string4.Length > 1)
+                {
+                    System.IO.File.WriteAllText(@"D:\Studium\Semester06_So12\Bachelorarbeit\KinectData\" + stamp + "-P4.csv",
+                        Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string4.ToString());
+                }
+                if (Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string5.Length > 1)
+                {
+                    System.IO.File.WriteAllText(@"D:\Studium\Semester06_So12\Bachelorarbeit\KinectData\" + stamp + "-P5.csv",
+                        Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string5.ToString());
+                }
+                if (Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string6.Length > 1)
+                {
+                    System.IO.File.WriteAllText(@"D:\Studium\Semester06_So12\Bachelorarbeit\KinectData\" + stamp + "-P6.csv",
+                        Microsoft.Samples.Kinect.WpfViewers.KinectDiagnosticViewer.string6.ToString());
+                }
+
+            
             CleanUpAllKinectViewers();
         }
         #endregion ctor & Window events
@@ -290,6 +334,7 @@ namespace SkeletalViewer
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
             {
+                
                 CleanUpAllKinectViewers();
                 CreateAllKinectViewers();
             }
